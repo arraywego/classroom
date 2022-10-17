@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Display Page</title>
+</head>
+<body>
+    <div id="container">
+        <ul>
+
+        </ul>
+    </div>
+    <script>        
+        /*var cont = document.getElementById('container');
+        var ul = document.createElement('ul');
+        let url = '/api/todo';
+
+        fetch(url).then(response => response.json())
+        .then ((result)=> {
+        console.log('success: ', result);
+
+        
+        for (var i =0; i< result.length; i++){
+
+        var li = document.createElement('li');
+        li.innerHTML = `title: ${result[i].title} is_done: ${result[i].is_done}`;
+        ul.appendChild(li);
+
+        }
+        
+        })
+        .catch(error => console.log('error:', error));
+        cont.appendChild(ul);*/
+        let url = '/api/todo';
+        fetch(url)
+        .then(res =>res.json())
+        .then(data => {
+            console.log(data)
+            data.forEach(data =>{
+                const markup = `<li>${data.title}</li>`;
+                document.querySelector('ul').insertAdjacentHTML('beforeend',markup);
+            });
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        
+    </script>
+</body>
+</html>
