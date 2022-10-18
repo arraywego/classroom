@@ -11,41 +11,26 @@
         <ul>
 
         </ul>
+        <button onclick="showData()" id="button">Show Data</button>
     </div>
+    
     <script>        
-        /*var cont = document.getElementById('container');
-        var ul = document.createElement('ul');
-        let url = '/api/todo';
-
-        fetch(url).then(response => response.json())
-        .then ((result)=> {
-        console.log('success: ', result);
-
-        
-        for (var i =0; i< result.length; i++){
-
-        var li = document.createElement('li');
-        li.innerHTML = `title: ${result[i].title} is_done: ${result[i].is_done}`;
-        ul.appendChild(li);
-
-        }
-        
-        })
-        .catch(error => console.log('error:', error));
-        cont.appendChild(ul);*/
+        function showData(){
         let url = '/api/todo';
         fetch(url)
         .then(res =>res.json())
         .then(data => {
             console.log(data)
             data.forEach(data =>{
-                const markup = `<li>${data.title}</li>`;
-                document.querySelector('ul').insertAdjacentHTML('beforeend',markup);
+                
+                document.querySelector('ul').insertAdjacentHTML('beforeend',`<li>${data.title}</li>`);
             });
         })
         .catch(error => {
             console.log(error)
         })
+        document.getElementById('button').style.display = "none";
+    }
         
     </script>
 </body>
